@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Commission Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h2>Real Estate Commission Calculator</h2>
+
+  <input id="price" placeholder="Sale Price">
+  <input id="commission" placeholder="Commission %">
+  <input id="split" placeholder="Broker Split %">
+
+  <button onclick="calcCommission()">Calculate</button>
+
+  <div class="result">Gross: <span id="gross">$0</span></div>
+  <div class="result">Net: <span id="net">$0</span></div>
+
+  <p>Want more deals like this automatically?</p>
+  <button>Book Demo</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
