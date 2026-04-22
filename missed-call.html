@@ -1,79 +1,12 @@
-<!-- Version 10 - Missed Call Calculator + Lead Intelligence -->
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Missed Call Calculator</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="commission.html">Commission</a>
-  <a href="missed-call.html">Missed Calls</a>
-  <a href="roi.html">ROI</a>
-</div>
-
-<h2>Missed Call Revenue Calculator</h2>
-
-<h2 id="lossHeadline" style="color:#e60023;">
-  You're losing $0/month
-</h2>
-
-<!-- SLIDERS -->
-<div class="field">
-  <label>Monthly Calls</label>
-  <input type="range" id="calls" min="10" max="300" value="100">
-  <div id="callsVal">100</div>
-</div>
-
-<div class="field">
-  <label>Missed Call %</label>
-  <input type="range" id="missed" min="0" max="80" value="30">
-  <div id="missedVal">30%</div>
-</div>
-
-<div class="field">
-  <label>Close Rate %</label>
-  <input type="range" id="close" min="1" max="30" value="10">
-  <div id="closeVal">10%</div>
-</div>
-
-<div class="field">
-  <label>Avg Commission</label>
-  <input type="range" id="avg" min="1000" max="20000" step="500" value="8000">
-  <div id="avgVal">$8,000</div>
-</div>
-
-<!-- RESULTS -->
-<div class="result-box red">
-  <div>You Are Losing</div>
-  <div class="result red" id="lost">$0</div>
-</div>
-
-<!-- FORM -->
-<form name="lead-capture" method="POST" data-netlify="true">
-  <input type="hidden" name="form-name" value="lead-capture">
-
-  <!-- Hidden value -->
-  <input type="hidden" name="lostRevenue" id="hiddenLost">
-
-  <div class="capture-box">
-    <p><strong>Want a copy of this calculation?</strong></p>
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Send Results</button>
-  </div>
+<!-- Version 12 -->
+<form onsubmit="submitLead(event)">
+<input type="hidden" id="hiddenLost">
+<input id="email" placeholder="Enter email" required>
+<button>Send Results</button>
 </form>
 
+<div class="capture-box">
+<textarea id="suggestionText"></textarea>
+<input id="suggestionEmail">
+<button onclick="submitSuggestion()">Submit Suggestion</button>
 </div>
-
-<div class="sticky-cta">
-  <button>Stop Losing Deals — Book Demo</button>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
