@@ -1,82 +1,91 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f5f7fb;
-  margin: 0;
-  padding: 20px;
+// Version 6 - Live Calculations + Lead Capture
+
+function formatCurrency(num) {
+  return "$" + Number(num).toLocaleString();
 }
 
-.container {
-  max-width: 520px;
-  margin: auto;
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  animation: fadeIn 0.5s ease;
+/* COMMISSION */
+function calcCommissionLive() {
+  let price = parseFloat(document.getElementById('price')?.value) || 0;
+  let commission = parseFloat(document.getElementById('commission')?.value) || 0;
+  let split = parseFloat(document.getElementById('split')?.value) || 0;
+
+  let gross = price * (commission / 100);
+  let net = gross * (split / 100);
+
+  if (document.getElementById('priceVal')) {
+    document.getElementById('priceVal').innerText = formatCurrency(price);
+    document.getElementById('commissionVal').innerText = commission + "%";
+    document.getElementById('splitVal').innerText = split + "%";
+
+    document.getElementById('gross').innerText = formatCurrency(gross);
+    document.getElementById('net').innerText = formatCurrency(net);
+  }
 }
 
-.nav {
-  margin-bottom: 25px;
-  font-size: 14px;
+/* MISSED CALLS */
+function calcMissedCallsLive() {
+  let calls = parseFloat(document.getElementById('calls')?.value) || 0;
+  let missed = parseFloat(document.getElementById('missed')?.value) || 0;
+  let close = parseFloat(document.getElementById('close')?.value) || 0;
+  let avg = parseFloat(document.getElementById('avg')?.value) || 0;
+
+  let missedCalls = calls * (missed / 100);
+  let lostDeals = missedCalls * (close / 100);
+  let lostRevenue = lostDeals * avg;
+
+  if (document.getElementById('callsVal')) {
+    document.getElementById('callsVal').innerText = calls;
+    document.getElementById('missedVal').innerText = missed + "%";
+    document.getElementById('closeVal').innerText = close + "%";
+    document.getElementById('avgVal').innerText = formatCurrency(avg);
+
+    document.getElementById('lost').innerText = formatCurrency(lostRevenue);
+  }
 }
 
-.nav a {
-  text-decoration: none;
-  color: #007BFF;
-  margin-right: 12px;
+/* ROI */
+function calcROILive() {
+  let purchase = parseFloat(document.getElementById('purchase')?.value) || 0;
+  let rehab = parseFloat(document.getElementById('rehab')?.value) || 0;
+  let arv = parseFloat(document.getElementById('arv')?.value) || 0;
+  let holding = parseFloat(document.getElementById('holding')?.value) || 0;
+  let selling = parseFloat(document.getElementById('selling')?.value) || 0;
+
+  let totalCost = purchase + rehab + holding + selling;
+  let profit = arv - totalCost;
+  let roi = totalCost > 0 ? (profit / totalCost) * 100 : 0;
+
+  if (document.getElementById('purchaseVal')) {
+    document.getElementById('purchaseVal').innerText = formatCurrency(purchase);
+    document.getElementById('rehabVal').innerText = formatCurrency(rehab);
+    document.getElementById('arvVal').innerText = formatCurrency(arv);
+    document.getElementById('holdingVal').innerText = formatCurrency(holding);
+    document.getElementById('sellingVal').innerText = formatCurrency(selling);
+
+    document.getElementById('profit').innerText = formatCurrency(profit);
+    document.getElementById('roi').innerText = roi.toFixed(1) + "%";
+  }
 }
 
-.field {
-  margin-bottom: 20px;
+/* GLOBAL */
+function runAllCalculations() {
+  calcCommissionLive();
+  calcMissedCallsLive();
+  calcROILive();
 }
 
-label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 6px;
-}
+document.addEventListener("input", runAllCalculations);
+window.onload = runAllCalculations;
 
-input[type="range"] {
-  width: 100%;
-}
+/* LEAD CAPTURE */
+function captureLead() {
+  let email = document.getElementById("email")?.value;
 
-.value-display {
-  font-size: 14px;
-  color: #555;
-  margin-top: 5px;
-}
+  if (!email) {
+    alert("Please enter your email");
+    return;
+  }
 
-.result-box {
-  background: #f0f4ff;
-  padding: 18px;
-  border-radius: 12px;
-  margin-top: 20px;
-  transition: all 0.3s ease;
-}
-
-.result {
-  font-size: 26px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.cta {
-  margin-top: 20px;
-  text-align: center;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(135deg, #007BFF, #0056d2);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(10px);}
-  to {opacity:1; transform: translateY(0);}
+  alert("Results sent! (Connect this to your CRM next)");
 }

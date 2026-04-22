@@ -1,3 +1,4 @@
+<!-- Version 6 - Premium UI + Sliders + Live Calc + Lead Capture -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,35 +19,42 @@
   </div>
 
   <h2>Real Estate ROI Calculator</h2>
-  <p>Analyze the profitability of your investment or flip.</p>
+  <p>Analyze the profitability of your deal instantly.</p>
 
-  <!-- INPUTS -->
+  <!-- PURCHASE -->
   <div class="field">
-    <label>Purchase Price ($)</label>
-    <input id="purchase" value="200000">
+    <label>Purchase Price</label>
+    <input type="range" id="purchase" min="50000" max="500000" step="10000" value="200000">
+    <div class="value-display" id="purchaseVal">$200,000</div>
   </div>
 
+  <!-- REHAB -->
   <div class="field">
-    <label>Rehab / Renovation Cost ($)</label>
-    <input id="rehab" value="50000">
+    <label>Rehab Cost</label>
+    <input type="range" id="rehab" min="0" max="200000" step="5000" value="50000">
+    <div class="value-display" id="rehabVal">$50,000</div>
   </div>
 
+  <!-- ARV -->
   <div class="field">
-    <label>After Repair Value (ARV) ($)</label>
-    <input id="arv" value="300000">
+    <label>After Repair Value (ARV)</label>
+    <input type="range" id="arv" min="100000" max="700000" step="10000" value="300000">
+    <div class="value-display" id="arvVal">$300,000</div>
   </div>
 
+  <!-- HOLDING -->
   <div class="field">
-    <label>Holding Costs ($)</label>
-    <input id="holding" value="10000">
+    <label>Holding Costs</label>
+    <input type="range" id="holding" min="0" max="50000" step="1000" value="10000">
+    <div class="value-display" id="holdingVal">$10,000</div>
   </div>
 
+  <!-- SELLING -->
   <div class="field">
-    <label>Selling Costs ($)</label>
-    <input id="selling" value="15000">
+    <label>Selling Costs</label>
+    <input type="range" id="selling" min="0" max="50000" step="1000" value="15000">
+    <div class="value-display" id="sellingVal">$15,000</div>
   </div>
-
-  <button onclick="calcROI()">Calculate ROI</button>
 
   <!-- RESULTS -->
   <div class="result-box">
@@ -57,10 +65,21 @@
     <div class="result" id="roi">0%</div>
   </div>
 
+  <!-- LEAD CAPTURE -->
+  <div class="capture-box">
+    <p><strong>Want a copy of this deal analysis?</strong></p>
+    <p style="font-size:14px;color:#666;">
+      We’ll send this breakdown to your inbox.
+    </p>
+
+    <input type="email" id="email" placeholder="Enter your email">
+    <button onclick="captureLead()">Send Results</button>
+  </div>
+
   <!-- CTA -->
   <div class="cta">
-    <p><strong>Want more profitable deals like this?</strong></p>
-    <button onclick="window.location.href='#'">Automate Your Lead Pipeline</button>
+    <p><strong>Find more profitable deals automatically</strong></p>
+    <button>Automate My Leads</button>
   </div>
 
 </div>
