@@ -10,28 +10,50 @@
 <div class="container">
 
   <!-- NAV -->
-  <div style="margin-bottom:20px;">
-    <a href="index.html">Home</a> |
-    <a href="commission.html">Commission</a> |
-    <a href="missed-call.html">Missed Calls</a> |
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="commission.html">Commission</a>
+    <a href="missed-call.html">Missed Calls</a>
     <a href="roi.html">ROI</a>
   </div>
 
   <h2>Missed Call Revenue Calculator</h2>
+  <p>Estimate how much revenue you're losing from missed inbound calls.</p>
 
-  <input id="calls" value="100" placeholder="Monthly Calls">
-  <input id="missed" value="30" placeholder="Missed Call %">
-  <input id="close" value="10" placeholder="Close Rate %">
-  <input id="avg" value="8000" placeholder="Avg Commission">
-
-  <button onclick="calcMissedCalls()">Calculate</button>
-
-  <div class="result" style="color:red;">
-    Lost Revenue: <span id="lost">$0</span>
+  <!-- INPUTS -->
+  <div class="field">
+    <label>Monthly Incoming Calls</label>
+    <input id="calls" value="100">
   </div>
 
-  <p><strong>Recover these deals automatically with AI follow-up</strong></p>
-  <button onclick="window.location.href='#'">Book a Demo</button>
+  <div class="field">
+    <label>% of Calls Missed</label>
+    <input id="missed" value="30">
+  </div>
+
+  <div class="field">
+    <label>Lead Close Rate (%)</label>
+    <input id="close" value="10">
+  </div>
+
+  <div class="field">
+    <label>Average Commission per Deal ($)</label>
+    <input id="avg" value="8000">
+  </div>
+
+  <button onclick="calcMissedCalls()">Calculate Lost Revenue</button>
+
+  <!-- RESULTS -->
+  <div class="result-box" style="background:#ffecec;">
+    <div>Estimated Lost Revenue</div>
+    <div class="result" id="lost" style="color:red;">$0</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <p><strong>Recover these deals automatically with AI follow-up</strong></p>
+    <button onclick="window.location.href='#'">Book a Demo</button>
+  </div>
 
 </div>
 

@@ -10,26 +10,48 @@
 <div class="container">
 
   <!-- NAV -->
-  <div style="margin-bottom:20px;">
-    <a href="index.html">Home</a> |
-    <a href="commission.html">Commission</a> |
-    <a href="missed-call.html">Missed Calls</a> |
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="commission.html">Commission</a>
+    <a href="missed-call.html">Missed Calls</a>
     <a href="roi.html">ROI</a>
   </div>
 
   <h2>Real Estate Commission Calculator</h2>
+  <p>Estimate how much you earn from each deal.</p>
 
-  <input id="price" value="400000" placeholder="Sale Price">
-  <input id="commission" value="3" placeholder="Commission %">
-  <input id="split" value="80" placeholder="Broker Split %">
+  <!-- INPUTS -->
+  <div class="field">
+    <label>Sale Price ($)</label>
+    <input id="price" value="400000">
+  </div>
 
-  <button onclick="calcCommission()">Calculate</button>
+  <div class="field">
+    <label>Commission Rate (%)</label>
+    <input id="commission" value="3">
+  </div>
 
-  <div class="result">Gross: <span id="gross">$0</span></div>
-  <div class="result">Net: <span id="net">$0</span></div>
+  <div class="field">
+    <label>Your Split with Broker (%)</label>
+    <input id="split" value="80">
+  </div>
 
-  <p><strong>Want more deals like this automatically?</strong></p>
-  <button onclick="window.location.href='#'">Book a Demo</button>
+  <button onclick="calcCommission()">Calculate Earnings</button>
+
+  <!-- RESULTS -->
+  <div class="result-box">
+    <div>Gross Commission</div>
+    <div class="result" id="gross">$0</div>
+
+    <div style="margin-top:10px;">Your Earnings</div>
+    <div class="result" id="net">$0</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <p><strong>What if you could close 2 more deals per month?</strong></p>
+    <button onclick="window.location.href='#'">Book a Demo</button>
+  </div>
 
 </div>
 

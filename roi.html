@@ -10,28 +10,58 @@
 <div class="container">
 
   <!-- NAV -->
-  <div style="margin-bottom:20px;">
-    <a href="index.html">Home</a> |
-    <a href="commission.html">Commission</a> |
-    <a href="missed-call.html">Missed Calls</a> |
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="commission.html">Commission</a>
+    <a href="missed-call.html">Missed Calls</a>
     <a href="roi.html">ROI</a>
   </div>
 
   <h2>Real Estate ROI Calculator</h2>
+  <p>Analyze the profitability of your investment or flip.</p>
 
-  <input id="purchase" value="200000" placeholder="Purchase Price">
-  <input id="rehab" value="50000" placeholder="Rehab Cost">
-  <input id="arv" value="300000" placeholder="ARV">
-  <input id="holding" value="10000" placeholder="Holding Costs">
-  <input id="selling" value="15000" placeholder="Selling Costs">
+  <!-- INPUTS -->
+  <div class="field">
+    <label>Purchase Price ($)</label>
+    <input id="purchase" value="200000">
+  </div>
 
-  <button onclick="calcROI()">Calculate</button>
+  <div class="field">
+    <label>Rehab / Renovation Cost ($)</label>
+    <input id="rehab" value="50000">
+  </div>
 
-  <div class="result">Profit: <span id="profit">$0</span></div>
-  <div class="result">ROI: <span id="roi">0%</span></div>
+  <div class="field">
+    <label>After Repair Value (ARV) ($)</label>
+    <input id="arv" value="300000">
+  </div>
 
-  <p><strong>Want more deals like this sent to you automatically?</strong></p>
-  <button onclick="window.location.href='#'">Book a Demo</button>
+  <div class="field">
+    <label>Holding Costs ($)</label>
+    <input id="holding" value="10000">
+  </div>
+
+  <div class="field">
+    <label>Selling Costs ($)</label>
+    <input id="selling" value="15000">
+  </div>
+
+  <button onclick="calcROI()">Calculate ROI</button>
+
+  <!-- RESULTS -->
+  <div class="result-box">
+    <div>Estimated Profit</div>
+    <div class="result" id="profit">$0</div>
+
+    <div style="margin-top:10px;">Return on Investment</div>
+    <div class="result" id="roi">0%</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <p><strong>Want more profitable deals like this?</strong></p>
+    <button onclick="window.location.href='#'">Automate Your Lead Pipeline</button>
+  </div>
 
 </div>
 
