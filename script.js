@@ -1,9 +1,17 @@
-// Version 10 - Capture Calculation Data with Leads
+// Version 11 - Google Sheets + Email Automation + Full UX
 
+const WEBHOOK_URL = "PASTE_YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE";
+
+/* =========================
+   FORMAT
+========================= */
 function formatCurrency(num) {
   return "$" + Number(num).toLocaleString();
 }
 
+/* =========================
+   ANIMATE NUMBERS
+========================= */
 function animateValue(element, start, end, duration = 300) {
   let startTime = null;
 
@@ -20,18 +28,27 @@ function animateValue(element, start, end, duration = 300) {
   requestAnimationFrame(step);
 }
 
+/* =========================
+   SLIDER TRACK
+========================= */
 function updateSliderBackground(slider) {
   let value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
   slider.style.background = `linear-gradient(to right, #007BFF ${value}%, #ddd ${value}%)`;
 }
 
+/* =========================
+   HEADLINE (MISSED CALL)
+========================= */
 function updateLossHeadline(value) {
   const headline = document.getElementById("lossHeadline");
   if (!headline) return;
+
   headline.innerText = "You're losing " + formatCurrency(value) + "/month";
 }
 
-/* COMMISSION */
+/* =========================
+   COMMISSION CALCULATOR
+========================= */
 function calcCommissionLive() {
   let price = parseFloat(document.getElementById('price')?.value) || 0;
   let commission = parseFloat(document.getElementById('commission')?.value) || 0;
@@ -48,13 +65,15 @@ function calcCommissionLive() {
     animateValue(document.getElementById('gross'), 0, gross);
     animateValue(document.getElementById('net'), 0, net);
 
-    // 🔥 STORE VALUES
+    // Store hidden values
     document.getElementById('hiddenGross')?.setAttribute("value", gross);
     document.getElementById('hiddenNet')?.setAttribute("value", net);
   }
 }
 
-/* MISSED CALL */
+/* =========================
+   MISSED CALL CALCULATOR
+========================= */
 function calcMissedCallsLive() {
   let calls = parseFloat(document.getElementById('calls')?.value) || 0;
   let missed = parseFloat(document.getElementById('missed')?.value) || 0;
@@ -72,12 +91,14 @@ function calcMissedCallsLive() {
     animateValue(document.getElementById('lost'), 0, lost);
     updateLossHeadline(lost);
 
-    // 🔥 STORE VALUE
+    // Store hidden value
     document.getElementById('hiddenLost')?.setAttribute("value", lost);
   }
 }
 
-/* ROI */
+/* =========================
+   ROI CALCULATOR
+========================= */
 function calcROILive() {
   let purchase = parseFloat(document.getElementById('purchase')?.value) || 0;
   let rehab = parseFloat(document.getElementById('rehab')?.value) || 0;
@@ -99,12 +120,15 @@ function calcROILive() {
     animateValue(document.getElementById('profit'), 0, profit);
     document.getElementById('roi').innerText = roi.toFixed(1) + "%";
 
-    // 🔥 STORE VALUES
+    // Store hidden values
     document.getElementById('hiddenProfit')?.setAttribute("value", profit);
     document.getElementById('hiddenROI')?.setAttribute("value", roi.toFixed(1));
   }
 }
 
+/* =========================
+   GLOBAL RUNNER
+========================= */
 function runAll() {
   calcCommissionLive();
   calcMissedCallsLive();
@@ -115,3 +139,69 @@ function runAll() {
 
 document.addEventListener("input", runAll);
 window.onload = runAll;
+
+/* =========================
+   SUBMIT LEAD (EMAIL)
+========================= */
+function submitLead(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+
+  const payload = {
+    type: "lead",
+    email: email,
+    lostRevenue: document.getElementById("hiddenLost")?.value || "",
+    profit: document.getElementById("hiddenProfit")?.value || "",
+    roi: document.getElementById("hiddenROI")?.value || ""
+  };
+
+  fetch(WEBHOOK_URL, {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(() => {
+    alert("Results sent! Check your email.");
+  })
+  .catch(() => {
+    alert("Something went wrong.");
+  });
+}
+
+/* =========================
+   SUBMIT SUGGESTION
+========================= */
+function submitSuggestion() {
+  const suggestion = document.getElementById("suggestionText").value;
+  const email = document.getElementById("suggestionEmail").value;
+
+  if (!suggestion) {
+    alert("Please enter a suggestion");
+    return;
+  }
+
+  const payload = {
+    type: "suggestion",
+    email: email,
+    suggestion: suggestion
+  };
+
+  fetch(WEBHOOK_URL, {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(() => {
+    alert("Thanks for your feedback!");
+    document.getElementById("suggestionText").value = "";
+    document.getElementById("suggestionEmail").value = "";
+  })
+  .catch(() => {
+    alert("Something went wrong.");
+  });
+}
