@@ -1,10 +1,9 @@
-// Version 8 - Full Premium UX + Headline + Sticky CTA
+// Version 9 - Full UX + Netlify Compatible
 
 function formatCurrency(num) {
   return "$" + Number(num).toLocaleString();
 }
 
-/* 🔢 ANIMATION */
 function animateValue(element, start, end, duration = 300) {
   let startTime = null;
 
@@ -21,13 +20,11 @@ function animateValue(element, start, end, duration = 300) {
   requestAnimationFrame(step);
 }
 
-/* 🎨 SLIDER TRACK */
 function updateSliderBackground(slider) {
   let value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
   slider.style.background = `linear-gradient(to right, #007BFF ${value}%, #ddd ${value}%)`;
 }
 
-/* 💥 HEADLINE */
 function updateLossHeadline(value) {
   const headline = document.getElementById("lossHeadline");
   if (!headline) return;
@@ -35,7 +32,7 @@ function updateLossHeadline(value) {
   headline.innerText = "You're losing " + formatCurrency(value) + "/month";
 }
 
-/* COMMISSION */
+/* Commission */
 function calcCommissionLive() {
   let price = parseFloat(document.getElementById('price')?.value) || 0;
   let commission = parseFloat(document.getElementById('commission')?.value) || 0;
@@ -54,7 +51,7 @@ function calcCommissionLive() {
   }
 }
 
-/* MISSED CALL (🔥 CORE PAGE) */
+/* Missed Call */
 function calcMissedCallsLive() {
   let calls = parseFloat(document.getElementById('calls')?.value) || 0;
   let missed = parseFloat(document.getElementById('missed')?.value) || 0;
@@ -70,8 +67,6 @@ function calcMissedCallsLive() {
     document.getElementById('avgVal').innerText = formatCurrency(avg);
 
     animateValue(document.getElementById('lost'), 0, lost);
-
-    // 💥 Headline update
     updateLossHeadline(lost);
   }
 }
@@ -100,7 +95,6 @@ function calcROILive() {
   }
 }
 
-/* GLOBAL */
 function runAll() {
   calcCommissionLive();
   calcMissedCallsLive();
@@ -111,15 +105,3 @@ function runAll() {
 
 document.addEventListener("input", runAll);
 window.onload = runAll;
-
-/* LEAD */
-function captureLead() {
-  let email = document.getElementById("email")?.value;
-
-  if (!email) {
-    alert("Enter your email");
-    return;
-  }
-
-  alert("Sent! (Connect to CRM next)");
-}

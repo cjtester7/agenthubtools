@@ -1,4 +1,4 @@
-<!-- Version 6 - Premium UI + Sliders + Live Calc + Lead Capture -->
+<!-- Version 9 - Commission Calculator + Netlify Lead Capture -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,7 @@
   </div>
 
   <h2>Real Estate Commission Calculator</h2>
-  <p>Adjust the sliders to instantly estimate your earnings.</p>
+  <p>Adjust sliders to estimate your earnings instantly.</p>
 
   <!-- SALE PRICE -->
   <div class="field">
@@ -51,16 +51,26 @@
     <div class="result" id="net">$0</div>
   </div>
 
-  <!-- LEAD CAPTURE -->
-  <div class="capture-box">
-    <p><strong>Send this calculation to yourself</strong></p>
-    <p style="font-size:14px;color:#666;">
-      We’ll email you a copy so you can reference it later.
-    </p>
+  <!-- NETLIFY FORM -->
+  <form name="lead-capture" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="lead-capture">
 
-    <input type="email" id="email" placeholder="Enter your email">
-    <button onclick="captureLead()">Send Results</button>
-  </div>
+    <div class="capture-box">
+      <p><strong>Send this calculation to yourself</strong></p>
+      <p style="font-size:14px;color:#666;">
+        Get a copy of your deal breakdown in your inbox.
+      </p>
+
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="Enter your email" 
+        required
+      >
+
+      <button type="submit">Send Results</button>
+    </div>
+  </form>
 
   <!-- CTA -->
   <div class="cta">
