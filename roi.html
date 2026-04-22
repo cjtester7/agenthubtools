@@ -1,12 +1,40 @@
-<h2>ROI Calculator</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ROI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-<input id="purchase" placeholder="Purchase Price">
-<input id="rehab" placeholder="Rehab Cost">
-<input id="arv" placeholder="ARV">
-<input id="holding" placeholder="Holding Costs">
-<input id="selling" placeholder="Selling Costs">
+<body>
 
-<button onclick="calcROI()">Calculate</button>
+<div class="container">
 
-<div class="result">Profit: <span id="profit">$0</span></div>
-<div class="result">ROI: <span id="roi">0%</span></div>
+  <!-- NAV -->
+  <div style="margin-bottom:20px;">
+    <a href="index.html">Home</a> |
+    <a href="commission.html">Commission</a> |
+    <a href="missed-call.html">Missed Calls</a> |
+    <a href="roi.html">ROI</a>
+  </div>
+
+  <h2>Real Estate ROI Calculator</h2>
+
+  <input id="purchase" value="200000" placeholder="Purchase Price">
+  <input id="rehab" value="50000" placeholder="Rehab Cost">
+  <input id="arv" value="300000" placeholder="ARV">
+  <input id="holding" value="10000" placeholder="Holding Costs">
+  <input id="selling" value="15000" placeholder="Selling Costs">
+
+  <button onclick="calcROI()">Calculate</button>
+
+  <div class="result">Profit: <span id="profit">$0</span></div>
+  <div class="result">ROI: <span id="roi">0%</span></div>
+
+  <p><strong>Want more deals like this sent to you automatically?</strong></p>
+  <button onclick="window.location.href='#'">Book a Demo</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

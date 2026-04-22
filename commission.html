@@ -4,21 +4,33 @@
   <title>Commission Calculator</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="container">
+
+  <!-- NAV -->
+  <div style="margin-bottom:20px;">
+    <a href="index.html">Home</a> |
+    <a href="commission.html">Commission</a> |
+    <a href="missed-call.html">Missed Calls</a> |
+    <a href="roi.html">ROI</a>
+  </div>
+
   <h2>Real Estate Commission Calculator</h2>
 
-  <input id="price" placeholder="Sale Price">
-  <input id="commission" placeholder="Commission %">
-  <input id="split" placeholder="Broker Split %">
+  <input id="price" value="400000" placeholder="Sale Price">
+  <input id="commission" value="3" placeholder="Commission %">
+  <input id="split" value="80" placeholder="Broker Split %">
 
   <button onclick="calcCommission()">Calculate</button>
 
   <div class="result">Gross: <span id="gross">$0</span></div>
   <div class="result">Net: <span id="net">$0</span></div>
 
-  <p>Want more deals like this automatically?</p>
-  <button>Book Demo</button>
+  <p><strong>Want more deals like this automatically?</strong></p>
+  <button onclick="window.location.href='#'">Book a Demo</button>
+
 </div>
 
 <script src="script.js"></script>

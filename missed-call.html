@@ -1,10 +1,40 @@
-<h2>Missed Call Revenue Calculator</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Missed Call Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-<input id="calls" placeholder="Monthly Calls">
-<input id="missed" placeholder="Missed Call %">
-<input id="close" placeholder="Close Rate %">
-<input id="avg" placeholder="Avg Commission">
+<body>
 
-<button onclick="calcMissedCalls()">Calculate</button>
+<div class="container">
 
-<div class="result">Lost Revenue: <span id="lost">$0</span></div>
+  <!-- NAV -->
+  <div style="margin-bottom:20px;">
+    <a href="index.html">Home</a> |
+    <a href="commission.html">Commission</a> |
+    <a href="missed-call.html">Missed Calls</a> |
+    <a href="roi.html">ROI</a>
+  </div>
+
+  <h2>Missed Call Revenue Calculator</h2>
+
+  <input id="calls" value="100" placeholder="Monthly Calls">
+  <input id="missed" value="30" placeholder="Missed Call %">
+  <input id="close" value="10" placeholder="Close Rate %">
+  <input id="avg" value="8000" placeholder="Avg Commission">
+
+  <button onclick="calcMissedCalls()">Calculate</button>
+
+  <div class="result" style="color:red;">
+    Lost Revenue: <span id="lost">$0</span>
+  </div>
+
+  <p><strong>Recover these deals automatically with AI follow-up</strong></p>
+  <button onclick="window.location.href='#'">Book a Demo</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
