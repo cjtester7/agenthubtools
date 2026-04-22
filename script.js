@@ -1,39 +1,27 @@
-function calcCommission() {
-  let price = document.getElementById('price').value;
-  let commission = document.getElementById('commission').value;
-  let split = document.getElementById('split').value;
+function formatCurrency(num) {
+  return "$" + Number(num).toLocaleString();
+}
+
+function calcCommissionLive() {
+  let price = parseFloat(document.getElementById('price').value) || 0;
+  let commission = parseFloat(document.getElementById('commission').value) || 0;
+  let split = parseFloat(document.getElementById('split').value) || 0;
 
   let gross = price * (commission / 100);
   let net = gross * (split / 100);
 
-  document.getElementById('gross').innerText = "$" + gross.toFixed(2);
-  document.getElementById('net').innerText = "$" + net.toFixed(2);
+  // Update slider display values
+  document.getElementById('priceVal').innerText = formatCurrency(price);
+  document.getElementById('commissionVal').innerText = commission + "%";
+  document.getElementById('splitVal').innerText = split + "%";
+
+  // Update results
+  document.getElementById('gross').innerText = formatCurrency(gross);
+  document.getElementById('net').innerText = formatCurrency(net);
 }
 
-function calcMissedCalls() {
-  let calls = document.getElementById('calls').value;
-  let missed = document.getElementById('missed').value;
-  let close = document.getElementById('close').value;
-  let avg = document.getElementById('avg').value;
-
-  let missedCalls = calls * (missed / 100);
-  let lostDeals = missedCalls * (close / 100);
-  let lostRevenue = lostDeals * avg;
-
-  document.getElementById('lost').innerText = "$" + lostRevenue.toFixed(2);
-}
-
-function calcROI() {
-  let purchase = document.getElementById('purchase').value;
-  let rehab = document.getElementById('rehab').value;
-  let arv = document.getElementById('arv').value;
-  let holding = document.getElementById('holding').value;
-  let selling = document.getElementById('selling').value;
-
-  let totalCost = parseFloat(purchase) + parseFloat(rehab) + parseFloat(holding) + parseFloat(selling);
-  let profit = arv - totalCost;
-  let roi = (profit / totalCost) * 100;
-
-  document.getElementById('profit').innerText = "$" + profit.toFixed(2);
-  document.getElementById('roi').innerText = roi.toFixed(2) + "%";
-}
+// 🔥 THIS IS THE IMPORTANT PART
+// Run once when page loads
+window.onload = function() {
+  calcCommissionLive();
+};
