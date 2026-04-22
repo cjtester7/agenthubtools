@@ -1,4 +1,4 @@
-/* Version 6.1 - Fixed Formatting */
+/* Version 7 - Premium UI + Animations + Slider Styling */
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -16,6 +16,7 @@ body {
   box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
+/* NAV */
 .nav {
   margin-bottom: 25px;
 }
@@ -27,6 +28,7 @@ body {
   font-weight: 500;
 }
 
+/* FIELDS */
 .field {
   margin-bottom: 22px;
 }
@@ -37,12 +39,27 @@ label {
   margin-bottom: 6px;
 }
 
+/* 🎨 SLIDER STYLING */
 input[type="range"] {
   width: 100%;
-  margin-top: 5px;
+  appearance: none;
+  height: 6px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #007BFF 0%, #007BFF 50%, #ddd 50%, #ddd 100%);
+  outline: none;
 }
 
-/* 🔥 FIXED VALUE DISPLAY */
+/* Thumb */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #007BFF;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* VALUE DISPLAY */
 .value-display {
   font-size: 15px;
   color: #333;
@@ -50,24 +67,27 @@ input[type="range"] {
   font-weight: 500;
 }
 
-/* RESULT BOX */
+/* 🌈 GRADIENT RESULT CARD */
 .result-box {
-  background: #f0f4ff;
-  padding: 18px;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #eef3ff, #f9fbff);
+  padding: 20px;
+  border-radius: 14px;
   margin-top: 20px;
 }
 
 .result {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: bold;
   color: #111;
 }
 
-/* CTA */
-.cta {
-  margin-top: 20px;
-  text-align: center;
+/* 🔥 RED VARIANT */
+.result-box.red {
+  background: linear-gradient(135deg, #ffecec, #fff5f5);
+}
+
+.result.red {
+  color: #e60023;
 }
 
 /* BUTTON */
@@ -83,7 +103,7 @@ button {
   margin-top: 10px;
 }
 
-/* 🔥 LEAD CAPTURE FIX */
+/* CAPTURE */
 .capture-box {
   margin-top: 20px;
   padding: 15px;
@@ -98,13 +118,4 @@ button {
   margin-top: 10px;
   border-radius: 6px;
   border: 1px solid #ddd;
-}
-
-/* 🔥 RED ALERT STYLE (MISSED CALL PAGE) */
-.result-box.red {
-  background: #ffecec;
-}
-
-.result.red {
-  color: red;
 }
