@@ -1,10 +1,10 @@
-// Version 7 - Animated Numbers + Slider Progress
+// Version 8 - Full Premium UX + Headline + Sticky CTA
 
 function formatCurrency(num) {
   return "$" + Number(num).toLocaleString();
 }
 
-/* 🔢 ANIMATION FUNCTION */
+/* 🔢 ANIMATION */
 function animateValue(element, start, end, duration = 300) {
   let startTime = null;
 
@@ -15,18 +15,24 @@ function animateValue(element, start, end, duration = 300) {
 
     element.innerText = formatCurrency(value);
 
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    }
+    if (progress < 1) requestAnimationFrame(step);
   }
 
   requestAnimationFrame(step);
 }
 
-/* 🎨 SLIDER TRACK UPDATE */
+/* 🎨 SLIDER TRACK */
 function updateSliderBackground(slider) {
   let value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
   slider.style.background = `linear-gradient(to right, #007BFF ${value}%, #ddd ${value}%)`;
+}
+
+/* 💥 HEADLINE */
+function updateLossHeadline(value) {
+  const headline = document.getElementById("lossHeadline");
+  if (!headline) return;
+
+  headline.innerText = "You're losing " + formatCurrency(value) + "/month";
 }
 
 /* COMMISSION */
@@ -48,7 +54,7 @@ function calcCommissionLive() {
   }
 }
 
-/* MISSED CALL */
+/* MISSED CALL (🔥 CORE PAGE) */
 function calcMissedCallsLive() {
   let calls = parseFloat(document.getElementById('calls')?.value) || 0;
   let missed = parseFloat(document.getElementById('missed')?.value) || 0;
@@ -64,6 +70,9 @@ function calcMissedCallsLive() {
     document.getElementById('avgVal').innerText = formatCurrency(avg);
 
     animateValue(document.getElementById('lost'), 0, lost);
+
+    // 💥 Headline update
+    updateLossHeadline(lost);
   }
 }
 
@@ -112,5 +121,5 @@ function captureLead() {
     return;
   }
 
-  alert("Sent! (Hook this to CRM next)");
+  alert("Sent! (Connect to CRM next)");
 }
