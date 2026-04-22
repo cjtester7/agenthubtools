@@ -1,3 +1,4 @@
+<!-- Version 5 - Premium UI + Live Fix -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,51 +10,49 @@
 
 <div class="container">
 
-  <!-- NAV -->
-  <div class="nav">
-    <a href="index.html">Home</a>
-    <a href="commission.html">Commission</a>
-    <a href="missed-call.html">Missed Calls</a>
-    <a href="roi.html">ROI</a>
-  </div>
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="commission.html">Commission</a>
+  <a href="missed-call.html">Missed Calls</a>
+  <a href="roi.html">ROI</a>
+</div>
 
-  <h2>Missed Call Revenue Calculator</h2>
-  <p>Estimate how much revenue you're losing from missed inbound calls.</p>
+<h2>Missed Call Revenue Calculator</h2>
+<p>See how much money you're losing from missed calls.</p>
 
-  <!-- INPUTS -->
-  <div class="field">
-    <label>Monthly Incoming Calls</label>
-    <input id="calls" value="100">
-  </div>
+<div class="field">
+  <label>Monthly Calls</label>
+  <input type="range" id="calls" min="10" max="300" value="100">
+  <div id="callsVal">100</div>
+</div>
 
-  <div class="field">
-    <label>% of Calls Missed</label>
-    <input id="missed" value="30">
-  </div>
+<div class="field">
+  <label>Missed Call %</label>
+  <input type="range" id="missed" min="0" max="80" value="30">
+  <div id="missedVal">30%</div>
+</div>
 
-  <div class="field">
-    <label>Lead Close Rate (%)</label>
-    <input id="close" value="10">
-  </div>
+<div class="field">
+  <label>Close Rate %</label>
+  <input type="range" id="close" min="1" max="30" value="10">
+  <div id="closeVal">10%</div>
+</div>
 
-  <div class="field">
-    <label>Average Commission per Deal ($)</label>
-    <input id="avg" value="8000">
-  </div>
+<div class="field">
+  <label>Avg Commission</label>
+  <input type="range" id="avg" min="1000" max="20000" step="500" value="8000">
+  <div id="avgVal">$8,000</div>
+</div>
 
-  <button onclick="calcMissedCalls()">Calculate Lost Revenue</button>
+<div class="result-box" style="background:#ffecec;">
+  <div>You Are Losing</div>
+  <div class="result" id="lost">$0</div>
+</div>
 
-  <!-- RESULTS -->
-  <div class="result-box" style="background:#ffecec;">
-    <div>Estimated Lost Revenue</div>
-    <div class="result" id="lost" style="color:red;">$0</div>
-  </div>
-
-  <!-- CTA -->
-  <div class="cta">
-    <p><strong>Recover these deals automatically with AI follow-up</strong></p>
-    <button onclick="window.location.href='#'">Book a Demo</button>
-  </div>
+<div class="cta">
+  <p><strong>Recover this automatically with AI</strong></p>
+  <button>Book a Demo</button>
+</div>
 
 </div>
 
