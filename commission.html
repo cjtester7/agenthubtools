@@ -5,11 +5,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body oninput="calcCommissionLive()">
 
 <div class="container">
 
-  <!-- NAV -->
   <div class="nav">
     <a href="index.html">Home</a>
     <a href="commission.html">Commission</a>
@@ -18,25 +17,28 @@
   </div>
 
   <h2>Real Estate Commission Calculator</h2>
-  <p>Estimate how much you earn from each deal.</p>
+  <p>Drag sliders to instantly see your earnings.</p>
 
-  <!-- INPUTS -->
+  <!-- SALE PRICE -->
   <div class="field">
-    <label>Sale Price ($)</label>
-    <input id="price" value="400000">
+    <label>Sale Price</label>
+    <input type="range" id="price" min="50000" max="1000000" step="10000" value="400000">
+    <div class="value-display" id="priceVal">$400,000</div>
   </div>
 
+  <!-- COMMISSION -->
   <div class="field">
-    <label>Commission Rate (%)</label>
-    <input id="commission" value="3">
+    <label>Commission Rate</label>
+    <input type="range" id="commission" min="1" max="6" step="0.5" value="3">
+    <div class="value-display" id="commissionVal">3%</div>
   </div>
 
+  <!-- SPLIT -->
   <div class="field">
-    <label>Your Split with Broker (%)</label>
-    <input id="split" value="80">
+    <label>Broker Split</label>
+    <input type="range" id="split" min="50" max="100" step="5" value="80">
+    <div class="value-display" id="splitVal">80%</div>
   </div>
-
-  <button onclick="calcCommission()">Calculate Earnings</button>
 
   <!-- RESULTS -->
   <div class="result-box">
@@ -47,10 +49,9 @@
     <div class="result" id="net">$0</div>
   </div>
 
-  <!-- CTA -->
   <div class="cta">
-    <p><strong>What if you could close 2 more deals per month?</strong></p>
-    <button onclick="window.location.href='#'">Book a Demo</button>
+    <p><strong>Close more deals automatically with AI</strong></p>
+    <button>Book a Demo</button>
   </div>
 
 </div>

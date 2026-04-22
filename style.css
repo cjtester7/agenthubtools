@@ -10,12 +10,9 @@ body {
   margin: auto;
   background: #ffffff;
   padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-h1, h2 {
-  margin-bottom: 10px;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  animation: fadeIn 0.5s ease;
 }
 
 .nav {
@@ -26,25 +23,46 @@ h1, h2 {
 .nav a {
   text-decoration: none;
   color: #007BFF;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .field {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 label {
   font-weight: 600;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
-input {
+input[type="range"] {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 16px;
+}
+
+.value-display {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.result-box {
+  background: #f0f4ff;
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.result {
+  font-size: 26px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.cta {
+  margin-top: 20px;
+  text-align: center;
 }
 
 button {
@@ -53,29 +71,12 @@ button {
   background: linear-gradient(135deg, #007BFF, #0056d2);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-button:hover {
-  opacity: 0.95;
-}
-
-.result-box {
-  background: #f0f4ff;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-.result {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.cta {
-  margin-top: 20px;
-  text-align: center;
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
 }
