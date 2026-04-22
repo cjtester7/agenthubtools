@@ -1,6 +1,6 @@
 // Version 11 - Google Sheets + Email Automation + Full UX
 
-const WEBHOOK_URL = "PASTE_YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE";
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwY2bIUxZEc4-OUs3NUEbqYtf0PaWoxzD4_WH0Xk4Fa8VnIeOei50ym4baDrlL-fs-4Sg/exec";
 
 /* =========================
    FORMAT
