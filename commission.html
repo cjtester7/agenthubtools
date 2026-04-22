@@ -1,14 +1,70 @@
-<!-- Version 12 -->
+<!-- Version 12 - FULL FILE (FIXED FORMATTING) -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Commission Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="commission.html">Commission</a>
+  <a href="missed-call.html">Missed Calls</a>
+  <a href="roi.html">ROI</a>
+</div>
+
+<h2>Real Estate Commission Calculator</h2>
+
+<div class="field">
+  <label>Sale Price</label>
+  <input type="range" id="price" min="50000" max="1000000" value="400000">
+  <div class="value-display" id="priceVal"></div>
+</div>
+
+<div class="field">
+  <label>Commission %</label>
+  <input type="range" id="commission" min="1" max="6" step="0.5" value="3">
+  <div class="value-display" id="commissionVal"></div>
+</div>
+
+<div class="field">
+  <label>Broker Split %</label>
+  <input type="range" id="split" min="50" max="100" value="80">
+  <div class="value-display" id="splitVal"></div>
+</div>
+
+<div class="result-box">
+  <div>Gross Commission</div>
+  <div class="result" id="gross">$0</div>
+
+  <div style="margin-top:10px;">Your Earnings</div>
+  <div class="result" id="net">$0</div>
+</div>
+
 <form onsubmit="submitLead(event)">
-<input type="hidden" id="hiddenGross">
-<input type="hidden" id="hiddenNet">
-<input id="email" placeholder="Enter email" required>
-<button>Send Results</button>
+  <input type="hidden" id="hiddenGross">
+  <input type="hidden" id="hiddenNet">
+
+  <div class="capture-box">
+    <input id="email" placeholder="Enter email" required>
+    <button type="submit">Send Results</button>
+  </div>
 </form>
 
 <!-- Suggestions -->
 <div class="capture-box">
-<textarea id="suggestionText"></textarea>
-<input id="suggestionEmail" placeholder="Optional email">
-<button onclick="submitSuggestion()">Submit Suggestion</button>
+  <p><strong>Have a suggestion?</strong></p>
+  <textarea id="suggestionText"></textarea>
+  <input id="suggestionEmail" placeholder="Optional email">
+  <button onclick="submitSuggestion()">Submit Suggestion</button>
 </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
