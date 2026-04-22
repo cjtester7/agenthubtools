@@ -1,4 +1,4 @@
-// Version 9 - Full UX + Netlify Compatible
+// Version 10 - Capture Calculation Data with Leads
 
 function formatCurrency(num) {
   return "$" + Number(num).toLocaleString();
@@ -28,11 +28,10 @@ function updateSliderBackground(slider) {
 function updateLossHeadline(value) {
   const headline = document.getElementById("lossHeadline");
   if (!headline) return;
-
   headline.innerText = "You're losing " + formatCurrency(value) + "/month";
 }
 
-/* Commission */
+/* COMMISSION */
 function calcCommissionLive() {
   let price = parseFloat(document.getElementById('price')?.value) || 0;
   let commission = parseFloat(document.getElementById('commission')?.value) || 0;
@@ -48,10 +47,14 @@ function calcCommissionLive() {
 
     animateValue(document.getElementById('gross'), 0, gross);
     animateValue(document.getElementById('net'), 0, net);
+
+    // 🔥 STORE VALUES
+    document.getElementById('hiddenGross')?.setAttribute("value", gross);
+    document.getElementById('hiddenNet')?.setAttribute("value", net);
   }
 }
 
-/* Missed Call */
+/* MISSED CALL */
 function calcMissedCallsLive() {
   let calls = parseFloat(document.getElementById('calls')?.value) || 0;
   let missed = parseFloat(document.getElementById('missed')?.value) || 0;
@@ -68,6 +71,9 @@ function calcMissedCallsLive() {
 
     animateValue(document.getElementById('lost'), 0, lost);
     updateLossHeadline(lost);
+
+    // 🔥 STORE VALUE
+    document.getElementById('hiddenLost')?.setAttribute("value", lost);
   }
 }
 
@@ -92,6 +98,10 @@ function calcROILive() {
 
     animateValue(document.getElementById('profit'), 0, profit);
     document.getElementById('roi').innerText = roi.toFixed(1) + "%";
+
+    // 🔥 STORE VALUES
+    document.getElementById('hiddenProfit')?.setAttribute("value", profit);
+    document.getElementById('hiddenROI')?.setAttribute("value", roi.toFixed(1));
   }
 }
 

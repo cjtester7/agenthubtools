@@ -1,4 +1,4 @@
-<!-- Version 9 - Commission Calculator + Netlify Lead Capture -->
+<!-- Version 10 - Commission Calculator + Lead Intelligence -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,6 @@
 
 <div class="container">
 
-  <!-- NAV -->
   <div class="nav">
     <a href="index.html">Home</a>
     <a href="commission.html">Commission</a>
@@ -19,23 +18,20 @@
   </div>
 
   <h2>Real Estate Commission Calculator</h2>
-  <p>Adjust sliders to estimate your earnings instantly.</p>
 
-  <!-- SALE PRICE -->
+  <!-- SLIDERS -->
   <div class="field">
     <label>Sale Price</label>
     <input type="range" id="price" min="50000" max="1000000" step="10000" value="400000">
     <div class="value-display" id="priceVal">$400,000</div>
   </div>
 
-  <!-- COMMISSION -->
   <div class="field">
     <label>Commission Rate (%)</label>
     <input type="range" id="commission" min="1" max="6" step="0.5" value="3">
     <div class="value-display" id="commissionVal">3%</div>
   </div>
 
-  <!-- SPLIT -->
   <div class="field">
     <label>Broker Split (%)</label>
     <input type="range" id="split" min="50" max="100" step="5" value="80">
@@ -51,32 +47,20 @@
     <div class="result" id="net">$0</div>
   </div>
 
-  <!-- NETLIFY FORM -->
+  <!-- FORM -->
   <form name="lead-capture" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="lead-capture">
 
+    <!-- Hidden values -->
+    <input type="hidden" name="grossCommission" id="hiddenGross">
+    <input type="hidden" name="netCommission" id="hiddenNet">
+
     <div class="capture-box">
       <p><strong>Send this calculation to yourself</strong></p>
-      <p style="font-size:14px;color:#666;">
-        Get a copy of your deal breakdown in your inbox.
-      </p>
-
-      <input 
-        type="email" 
-        name="email" 
-        placeholder="Enter your email" 
-        required
-      >
-
+      <input type="email" name="email" placeholder="Enter your email" required>
       <button type="submit">Send Results</button>
     </div>
   </form>
-
-  <!-- CTA -->
-  <div class="cta">
-    <p><strong>Close more deals automatically with AI</strong></p>
-    <button>Book a Demo</button>
-  </div>
 
 </div>
 

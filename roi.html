@@ -1,4 +1,4 @@
-<!-- Version 9 - ROI Calculator + Netlify Lead Capture -->
+<!-- Version 10 - ROI Calculator + Lead Intelligence -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,87 +10,69 @@
 
 <div class="container">
 
-  <!-- NAV -->
-  <div class="nav">
-    <a href="index.html">Home</a>
-    <a href="commission.html">Commission</a>
-    <a href="missed-call.html">Missed Calls</a>
-    <a href="roi.html">ROI</a>
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="commission.html">Commission</a>
+  <a href="missed-call.html">Missed Calls</a>
+  <a href="roi.html">ROI</a>
+</div>
+
+<h2>Real Estate ROI Calculator</h2>
+
+<!-- SLIDERS -->
+<div class="field">
+  <label>Purchase Price</label>
+  <input type="range" id="purchase" min="50000" max="500000" step="10000" value="200000">
+  <div id="purchaseVal">$200,000</div>
+</div>
+
+<div class="field">
+  <label>Rehab Cost</label>
+  <input type="range" id="rehab" min="0" max="200000" step="5000" value="50000">
+  <div id="rehabVal">$50,000</div>
+</div>
+
+<div class="field">
+  <label>After Repair Value (ARV)</label>
+  <input type="range" id="arv" min="100000" max="700000" step="10000" value="300000">
+  <div id="arvVal">$300,000</div>
+</div>
+
+<div class="field">
+  <label>Holding Costs</label>
+  <input type="range" id="holding" min="0" max="50000" step="1000" value="10000">
+  <div id="holdingVal">$10,000</div>
+</div>
+
+<div class="field">
+  <label>Selling Costs</label>
+  <input type="range" id="selling" min="0" max="50000" step="1000" value="15000">
+  <div id="sellingVal">$15,000</div>
+</div>
+
+<!-- RESULTS -->
+<div class="result-box">
+  <div>Estimated Profit</div>
+  <div class="result" id="profit">$0</div>
+
+  <div style="margin-top:10px;">Return on Investment</div>
+  <div class="result" id="roi">0%</div>
+</div>
+
+<!-- FORM -->
+<form name="lead-capture" method="POST" data-netlify="true">
+  <input type="hidden" name="form-name" value="lead-capture">
+
+  <!-- Hidden values -->
+  <input type="hidden" name="profit" id="hiddenProfit">
+  <input type="hidden" name="roi" id="hiddenROI">
+
+  <div class="capture-box">
+    <p><strong>Want a copy of this deal analysis?</strong></p>
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Send Results</button>
   </div>
-
-  <h2>Real Estate ROI Calculator</h2>
-  <p>Analyze the profitability of your investment instantly.</p>
-
-  <!-- PURCHASE -->
-  <div class="field">
-    <label>Purchase Price</label>
-    <input type="range" id="purchase" min="50000" max="500000" step="10000" value="200000">
-    <div class="value-display" id="purchaseVal">$200,000</div>
-  </div>
-
-  <!-- REHAB -->
-  <div class="field">
-    <label>Rehab Cost</label>
-    <input type="range" id="rehab" min="0" max="200000" step="5000" value="50000">
-    <div class="value-display" id="rehabVal">$50,000</div>
-  </div>
-
-  <!-- ARV -->
-  <div class="field">
-    <label>After Repair Value (ARV)</label>
-    <input type="range" id="arv" min="100000" max="700000" step="10000" value="300000">
-    <div class="value-display" id="arvVal">$300,000</div>
-  </div>
-
-  <!-- HOLDING -->
-  <div class="field">
-    <label>Holding Costs</label>
-    <input type="range" id="holding" min="0" max="50000" step="1000" value="10000">
-    <div class="value-display" id="holdingVal">$10,000</div>
-  </div>
-
-  <!-- SELLING -->
-  <div class="field">
-    <label>Selling Costs</label>
-    <input type="range" id="selling" min="0" max="50000" step="1000" value="15000">
-    <div class="value-display" id="sellingVal">$15,000</div>
-  </div>
-
-  <!-- RESULTS -->
-  <div class="result-box">
-    <div>Estimated Profit</div>
-    <div class="result" id="profit">$0</div>
-
-    <div style="margin-top:10px;">Return on Investment</div>
-    <div class="result" id="roi">0%</div>
-  </div>
-
-  <!-- NETLIFY FORM -->
-  <form name="lead-capture" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="lead-capture">
-
-    <div class="capture-box">
-      <p><strong>Want a copy of this deal analysis?</strong></p>
-      <p style="font-size:14px;color:#666;">
-        We’ll send this breakdown to your inbox.
-      </p>
-
-      <input 
-        type="email" 
-        name="email" 
-        placeholder="Enter your email" 
-        required
-      >
-
-      <button type="submit">Send Results</button>
-    </div>
-  </form>
-
-  <!-- CTA -->
-  <div class="cta">
-    <p><strong>Find more profitable deals automatically</strong></p>
-    <button>Automate My Leads</button>
-  </div>
+</form>
 
 </div>
 
